@@ -3,6 +3,7 @@ vim.lsp.enable({
 	-- 'biome',
 	'cssls',
 	'emmet_language_server',
+	'eslint',
 	'lua_ls',
 })
 
