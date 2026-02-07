@@ -2,6 +2,7 @@ vim.lsp.enable({
 	'astro',
 	-- 'biome',
 	'cssls',
+	'emmet_language_server',
 	'lua_ls',
 })
 
