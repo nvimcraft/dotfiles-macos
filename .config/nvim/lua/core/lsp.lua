@@ -1,5 +1,6 @@
 vim.lsp.enable({
 	'astro',
+	-- 'biome',
 	'lua_ls',
 })
 
