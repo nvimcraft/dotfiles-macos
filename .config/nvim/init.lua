@@ -6,6 +6,6 @@ require('config.autocmds').setup()
 require('plugins.everforest')
 require('plugins.conform')
 require('plugins.mason')
-
+require('plugins.luasnip')
 
 require('core.lsp')
