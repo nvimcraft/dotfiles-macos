@@ -13,5 +13,6 @@ require('plugins.plenary')
 require('plugins.mini-pairs')
 require('plugins.nvim-surround')
 require('plugins.nvim-highlight-colors')
+require('plugins.gitsigns')
 
 require('core.lsp')
