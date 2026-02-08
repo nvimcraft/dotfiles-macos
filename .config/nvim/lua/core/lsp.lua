@@ -13,6 +13,7 @@ vim.lsp.enable({
 	'pyright',
 	'sqlls',
 	'svelte',
+	'vtsls',
 })
 
 vim.lsp.config('lua_ls', {
