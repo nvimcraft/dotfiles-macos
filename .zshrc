@@ -32,7 +32,7 @@ eval "$(zoxide init --cmd=cd zsh)"
 
 # Aliases
 alias ls='eza --long --all --git --icons --time-style=iso --group --classify'
-alias tree="eza --all --tree --icons --ignore-glob='node_modules|.git'"
+alias tree="eza --all --tree --icons --ignore-glob='node_modules|.git|.jj'"
 alias brew-maint="$HOME/dotfiles-macos/scripts/brew-maintenance.sh"
 alias cleanup="$HOME/dotfiles-macos/scripts/system-cleanup.sh"
 alias tmux-s="$HOME/dotfiles-macos/scripts/tmux-setup.sh"
