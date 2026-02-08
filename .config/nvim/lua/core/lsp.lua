@@ -9,6 +9,7 @@ vim.lsp.enable({
 	'html',
 	'jsonls',
 	'lua_ls',
+	'marksman',
 })
 
 vim.lsp.config('lua_ls', {
