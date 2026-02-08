@@ -10,6 +10,7 @@ vim.lsp.enable({
 	'jsonls',
 	'lua_ls',
 	'marksman',
+	'pyright',
 })
 
 vim.lsp.config('lua_ls', {
