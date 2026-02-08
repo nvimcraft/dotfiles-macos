@@ -7,6 +7,7 @@ vim.lsp.enable({
 	'gopls',
 	'graphql',
 	'html',
+	'jsonls',
 	'lua_ls',
 })
 
