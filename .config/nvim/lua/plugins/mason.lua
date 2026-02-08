@@ -38,6 +38,7 @@ require('mason-tool-installer').setup({
 		'goimports',
 		'eslint_d',
 		'prettier',
+		'shellcheck',
 		'shfmt',
 		'stylua',
 		'sql-formatter',
