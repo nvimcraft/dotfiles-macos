@@ -10,5 +10,6 @@ require('plugins.luasnip')
 require('plugins.nvim-cmp')
 require('plugins.schemastore')
 require('plugins.plenary')
+require('plugins.mini-pairs')
 
 require('core.lsp')
