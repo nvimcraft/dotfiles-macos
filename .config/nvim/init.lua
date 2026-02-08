@@ -16,5 +16,6 @@ require('plugins.nvim-highlight-colors')
 require('plugins.gitsigns')
 require('plugins.octo')
 require('plugins.telescope')
+require('plugins.vim-dadbod')
 
 require('core.lsp')
