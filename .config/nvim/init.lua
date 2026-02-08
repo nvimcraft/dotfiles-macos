@@ -33,5 +33,6 @@ require('plugins.mason')
 require('plugins.nvim-cmp')
 require('plugins.luasnip')
 require('plugins.nvim-treesitter')
+require('plugins.nvim-treesitter-context')
 
 require('core.lsp')
