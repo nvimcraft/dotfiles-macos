@@ -22,13 +22,16 @@ require('plugins.nvim-surround')
 require('plugins.conform')
 require('plugins.nvim-highlight-colors')
 
--- LSP dependencies
-require('plugins.schemastore')
+-- Editor tooling
 require('plugins.gitsigns')
 require('plugins.octo')
 require('plugins.vim-dadbod')
+
+-- LSP dependencies
+require('plugins.schemastore')
 require('plugins.mason')
 require('plugins.nvim-cmp')
 require('plugins.luasnip')
+require('plugins.nvim-treesitter')
 
 require('core.lsp')
