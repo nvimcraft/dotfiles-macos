@@ -11,6 +11,7 @@ vim.lsp.enable({
 	'lua_ls',
 	'marksman',
 	'pyright',
+	'sqlls',
 })
 
 vim.lsp.config('lua_ls', {
