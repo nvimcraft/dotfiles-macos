@@ -37,3 +37,6 @@ require('plugins.nvim-treesitter-context')
 require('plugins.nvim-ts-autotag')
 
 require('core.lsp')
+
+-- LSP-powered tooling
+require('plugins.refactoring')
