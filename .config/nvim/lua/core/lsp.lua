@@ -14,6 +14,7 @@ vim.lsp.enable({
 	'sqlls',
 	'svelte',
 	'vtsls',
+	'yamlls',
 })
 
 vim.lsp.config('lua_ls', {
