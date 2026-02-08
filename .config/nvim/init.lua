@@ -12,5 +12,6 @@ require('plugins.schemastore')
 require('plugins.plenary')
 require('plugins.mini-pairs')
 require('plugins.nvim-surround')
+require('plugins.nvim-highlight-colors')
 
 require('core.lsp')
