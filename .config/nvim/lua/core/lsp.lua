@@ -12,6 +12,7 @@ vim.lsp.enable({
 	'marksman',
 	'pyright',
 	'sqlls',
+	'svelte',
 })
 
 vim.lsp.config('lua_ls', {
