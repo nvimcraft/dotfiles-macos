@@ -4,5 +4,7 @@ require('config.autocmds').setup()
 
 -- require('plugins.vague')
 require('plugins.everforest')
+require('plugins.conform')
+
 
 require('core.lsp')
