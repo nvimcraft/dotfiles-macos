@@ -9,5 +9,6 @@ require('plugins.mason')
 require('plugins.luasnip')
 require('plugins.nvim-cmp')
 require('plugins.schemastore')
+require('plugins.plenary')
 
 require('core.lsp')
