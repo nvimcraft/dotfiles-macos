@@ -4,15 +4,17 @@ vim.pack.add({
 
 local conform = require('conform')
 
-conform.formatters.biome = {
-	command = 'biome',
-	args = { 'format', '--write', '$FILENAME' },
-	stdin = false,
-}
+-- Biome configuration (kept commented for fast switching)
+-- conform.formatters.biome = {
+-- 	command = 'biome',
+-- 	args = { 'format', '--write', '$FILENAME' },
+-- 	stdin = false,
+-- }
 
 conform.formatters['sql-formatter'] = {
-	command = 'sql-formatter',
-	args = { '--language', 'postgresql' },
+	command = 'sqlfmt',
+	args = { '-' },
+	-- args = { '--language', 'postgresql' },
 	stdin = true,
 }
 
@@ -43,9 +45,9 @@ require('conform').setup({
 		lua = { 'stylua' },
 		python = { 'isort', 'black' },
 		sh = { 'shfmt' },
-		sql = { 'sql-formatter' },
+		sql = { 'sqlfmt' },
 
-		-- Biome configuration (alternative, kept for easy switching)
+		-- Biome-based alternative (commented out intentionally)
 		-- ['_'] = { 'codespell', 'trim_whitespace' },
 		-- astro = { 'biome' },
 		-- css = { 'biome' },
