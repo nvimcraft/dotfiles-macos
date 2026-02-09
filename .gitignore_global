@@ -72,6 +72,9 @@ target/
 # lazy.nvim lockfile
 .config/nvim/lazy-lock.json
 
+#Neovim lockfile
+.config/nvim/nvim-pack-lock.json
+
 
 # Force tracking project folders/files that may conflict with global ignore
 !public/
