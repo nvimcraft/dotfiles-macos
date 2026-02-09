@@ -38,5 +38,8 @@ require('plugins.nvim-ts-autotag')
 
 require('core.lsp')
 
+-- Diagnostics / linting
+require('plugins.nvim-lint')
+
 -- LSP-powered tooling
 require('plugins.refactoring')
