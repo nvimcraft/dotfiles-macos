@@ -2,21 +2,12 @@ vim.pack.add({
 	{ src = 'https://github.com/stevearc/conform.nvim' },
 })
 
-local conform = require('conform')
-
 -- Biome configuration (kept commented for fast switching)
 -- conform.formatters.biome = {
 -- 	command = 'biome',
 -- 	args = { 'format', '--write', '$FILENAME' },
 -- 	stdin = false,
 -- }
-
-conform.formatters['sql-formatter'] = {
-	command = 'sqlfmt',
-	args = { '-' },
-	-- args = { '--language', 'postgresql' },
-	stdin = true,
-}
 
 require('conform').setup({
 	format_on_save = {
