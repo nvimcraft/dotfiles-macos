@@ -41,7 +41,7 @@ require('mason-tool-installer').setup({
 		'shellcheck',
 		'shfmt',
 		'stylua',
-		'sql-formatter',
+		'sqlfmt',
 	},
 	run_on_start = true,
 })
