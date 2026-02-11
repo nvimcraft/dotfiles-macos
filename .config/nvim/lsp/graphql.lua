@@ -1,44 +1,41 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'.graphqlrc',
+	'.graphqlrc.json',
+	'.graphqlrc.yaml',
+	'.graphqlrc.yml',
+	'.graphqlrc.js',
+	'graphql.config.json',
+	'graphql.config.js',
+	'graphql.config.yaml',
+	'graphql.config.yml',
+	'.git',
+}
+
+local fallback_to_cwd = false
+
 local M = {}
 
 M.spec = {
 	cmd = {
-		'graphql-lsp',
+		vim.fn.stdpath('data') .. '/mason/bin/graphql-lsp',
 		'server',
 		'-m',
 		'stream',
 	},
 
 	filetypes = {
-		-- 'astro',
+		'astro',
 		'graphql',
 		'javascript',
 		'javascriptreact',
-		-- 'svelte',
+		'svelte',
 		'typescriptreact',
 		'typescript',
 	},
 
-	root_markers = {
-		'.git',
-		-- GraphQL config files
-		'.graphqlrc',
-		'.graphqlrc.json',
-		'.graphqlrc.yaml',
-		'.graphqlrc.yml',
-		'.graphqlrc.js',
-		'graphql.config.json',
-		'graphql.config.js',
-		'graphql.config.yaml',
-		'graphql.config.yml',
-	},
-
-	single_file_support = true,
-	log_level = vim.lsp.protocol.MessageType.Warning,
-
-	-- documentSelector = {
-	--   { language = 'graphql', scheme = 'file' },
-	--   { language = 'graphql', scheme = 'file', pattern = '**/*.astro' },
-	-- },
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 }
 
 M.name = 'graphql'

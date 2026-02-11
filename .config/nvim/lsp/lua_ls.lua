@@ -1,23 +1,24 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'.stylua.toml',
+	'.git',
+}
+
+local fallback_to_cwd = true
+
 local M = {}
 
 M.spec = {
 	cmd = {
-		'lua-language-server',
+		vim.fn.stdpath('data') .. '/mason/bin/lua-language-server',
 	},
 
 	filetypes = {
 		'lua',
 	},
 
-	root_markers = {
-		'.git',
-		'.luacheckrc',
-		'.luarc.json',
-		'.luarc.jsonc',
-		'.stylua.toml',
-		'selene.toml',
-		'selene.yml',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		Lua = {
@@ -31,31 +32,16 @@ M.spec = {
 				enable = true,
 				setType = true,
 				paramType = true,
-				-- paramName = 'All',
-				-- semicolon = 'All',
-				-- arrayIndex = 'All',
-				-- moduleName = 'All',
 			},
 			telemetry = {
 				enable = false,
 			},
 			workspace = {
 				checkThirdParty = false,
-				library = {},
-				-- Enable if you want:
-				-- Full API docs and completion for plugin development
-				-- Autocompletion for all vim.api.* functions
-				-- Uncomment the line below to index Neovim’s runtime and plugins:
-				-- library = vim.api.nvim_get_runtime_file(),
+				library = vim.api.nvim_get_runtime_file('', true),
 			},
 		},
 	},
-
-	single_file_support = true,
-	autostart = false,
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
-
-M.name = 'lua_ls'
 
 return M.spec

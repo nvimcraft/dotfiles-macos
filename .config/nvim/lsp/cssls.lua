@@ -1,45 +1,31 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'package.json',
+	'.git',
+}
+
+local fallback_to_cwd = true
+
 local M = {}
 
 M.spec = {
 	cmd = {
-		'vscode-css-language-server',
+		vim.fn.stdpath('data') .. '/mason/bin/vscode-css-language-server',
 		'--stdio',
 	},
 
 	filetypes = {
 		'css',
-		'scss',
-		'less',
 	},
 
-	root_markers = {
-		'package.json',
-		'postcss.config.js',
-		'postcss.config.cjs',
-		'.git',
-		-- Tailwind intellisense support:
-		-- 'tailwind.config.js',
-		-- 'tailwind.config.cjs',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		css = {
 			validate = true,
-			lint = {
-				unknownAtRules = 'ignore',
-			},
 		},
-		scss = { validate = true },
-		less = { validate = true },
-
-		-- BEM methodology:
-		-- Keep validation enabled, but avoid false positives from
-		-- unknown selectors/properties (e.g. .block__element--modifier).
-		customData = {}, -- Extend custom completions if needed
 	},
-
-	single_file_support = true,
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
 
 M.name = 'cssls'

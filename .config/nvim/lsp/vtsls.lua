@@ -1,32 +1,37 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'tsconfig.json',
+	'tsconfig.app.json',
+	'tsconfig.node.json',
+	'jsconfig.json',
+	'package.json',
+	'.git',
+}
+
+local fallback_to_cwd = false
+
 local M = {}
 
 M.spec = {
-	cmd = { 'vtsls', '--stdio' },
+	cmd = {
+		vim.fn.stdpath('data') .. '/mason/bin/vtsls',
+		'--stdio',
+	},
 
 	filetypes = {
 		'javascript',
 		'javascriptreact',
 		'typescript',
 		'typescriptreact',
-		'json',
-		'jsonc',
 	},
 
-	root_markers = {
-		'tsconfig.json',
-		'tsconfig.base.json',
-		'tsconfig.app.json',
-		'tsconfig.node.json',
-		'jsconfig.json',
-		'package.json',
-		'package-lock.json',
-		'pnpm-lock.yaml',
-		'pnpm-workspace.yaml',
-		'yarn.lock',
-		'bun.lock',
-		'bun.lockb',
-		'.git',
-	},
+	on_attach = function(client)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+	end,
+
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		vtsls = {
@@ -34,14 +39,11 @@ M.spec = {
 			experimental = {
 				completion = {
 					enableServerSideFuzzyMatch = true,
-					preferredPackageManager = 'npm',
+					preferredPackageManager = 'pnpm',
 				},
 			},
 		},
 	},
-
-	single_file_support = false,
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
 
 M.name = 'vtsls'

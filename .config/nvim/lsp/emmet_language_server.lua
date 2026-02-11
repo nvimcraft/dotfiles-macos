@@ -2,7 +2,7 @@ local M = {}
 
 M.spec = {
 	cmd = {
-		'emmet-language-server',
+		vim.fn.stdpath('data') .. '/mason/bin/emmet-language-server',
 		'--stdio',
 	},
 
@@ -33,13 +33,10 @@ M.spec = {
 			['bem.enabled'] = true,
 
 			-- Output formatting
-			['output.selfClosingTag'] = true,
 			['output.indent'] = '  ',
 			['output.newline'] = '\n',
 		},
 	},
-
-	single_file_support = true,
 }
 
 M.name = 'emmet_language_server'

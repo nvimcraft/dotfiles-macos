@@ -1,22 +1,30 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'pyproject.toml',
+	'setup.py',
+	'setup.cfg',
+	'requirements.txt',
+	'Pipfile',
+	'pyrightconfig.json',
+	'.git',
+}
+
+local fallback_to_cwd = false
+
 local M = {}
 
 M.spec = {
 	cmd = {
-		'pyright-langserver',
+		vim.fn.stdpath('data') .. '/mason/bin/pyright-langserver',
 		'--stdio',
 	},
 
-	filetypes = { 'python' },
-
-	root_markers = {
-		'pyproject.toml',
-		'setup.py',
-		'setup.cfg',
-		'requirements.txt',
-		'Pipfile',
-		'pyrightconfig.json',
-		'.git',
+	filetypes = {
+		'python',
 	},
+
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		python = {
@@ -58,9 +66,6 @@ M.spec = {
 			},
 		},
 	},
-
-	single_file_support = true,
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
 
 M.name = 'pyright'

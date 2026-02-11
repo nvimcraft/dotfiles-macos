@@ -36,7 +36,7 @@ require('plugins.nvim-treesitter')
 require('plugins.nvim-treesitter-context')
 require('plugins.nvim-ts-autotag')
 
-require('core.lsp')
+require('core.lsp').setup()
 
 -- Diagnostics / linting
 require('plugins.nvim-lint')

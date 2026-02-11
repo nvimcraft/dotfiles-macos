@@ -1,8 +1,17 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'package.json',
+	'.git',
+}
+
+local fallback_to_cwd = true
+
 local M = {}
 
 M.spec = {
 	cmd = {
-		'vscode-html-language-server',
+		vim.fn.stdpath('data') .. '/mason/bin/vscode-html-language-server',
 		'--stdio',
 	},
 
@@ -10,36 +19,16 @@ M.spec = {
 		'html',
 	},
 
-	root_markers = {
-		'.git',
-		'package.json',
-		'pnpm-lock.yaml',
-		'yarn.lock',
-		'bun.lock',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		html = {
 			validate = true,
-			format = {
-				enable = false,
-				wrapLineLength = 120,
-				unformatted = 'b,em,strong,i,span',
-				contentUnformatted = 'pre,code,textarea',
-			},
 			suggest = {
 				html5 = true,
 			},
 		},
 	},
-
-	single_file_support = true,
-
-	init_options = {
-		provideFormatter = true,
-	},
-
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
 
 M.name = 'html'

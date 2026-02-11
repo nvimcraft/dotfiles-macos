@@ -1,25 +1,39 @@
-local M = {}
-
+local lsp = require('core.lsp')
 local schemastore = require('schemastore')
+
+local root_markers = {
+	'.yamllint',
+	'docker-compose.yml',
+	'docker-compose.yaml',
+	'.git',
+}
+
+local fallback_to_cwd = true
+
+-- AWS CloudFormation intrinsic function tags
+local cloudformation_tags = {
+	'!Ref scalar',
+	'!Sub scalar',
+	'!GetAtt scalar',
+	'!ImportValue scalar',
+	'!Join sequence',
+	'!Select sequence',
+	'!If sequence',
+}
+
+local M = {}
 
 M.spec = {
 	cmd = {
-		'yaml-language-server',
+		vim.fn.stdpath('data') .. '/mason/bin/yaml-language-server',
 		'--stdio',
 	},
 
 	filetypes = {
 		'yaml',
-		-- 'yml',
 	},
 
-	root_markers = {
-		'.yamllint',
-		'.git',
-		'package.json',
-		'docker-compose.yml',
-		'docker-compose.yaml',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		yaml = {
@@ -28,24 +42,16 @@ M.spec = {
 			hover = true,
 			completion = true,
 			schemaStore = {
-				enable = false, -- disable built-in, use schemastore.nvim instead
+				-- Disable yamlls built-in schema store.
+				enable = false,
 				url = '',
 			},
-			schemas = schemastore.yaml.schemas(), -- auto-load schemas
-			customTags = {
-				'!Ref scalar',
-				'!Sub scalar',
-				'!GetAtt scalar',
-				'!ImportValue scalar',
-				'!Join sequence',
-				'!Select sequence',
-				'!If sequence',
-			},
+
+			-- Load curated YAML schemas from schemastore.nvim
+			schemas = schemastore.yaml.schemas(),
+			customTags = cloudformation_tags,
 		},
 	},
-
-	single_file_support = true,
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
 
 M.name = 'yamlls'

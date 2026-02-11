@@ -1,8 +1,19 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'astro.config.mjs',
+	'astro.config.ts',
+	'package.json',
+	'.git',
+}
+
+local fallback_to_cwd = false
+
 local M = {}
 
 M.spec = {
 	cmd = {
-		'astro-ls',
+		vim.fn.stdpath('data') .. '/mason/bin/astro-ls',
 		'--stdio',
 	},
 
@@ -10,56 +21,20 @@ M.spec = {
 		'astro',
 	},
 
-	root_markers = {
-		'astro.config.mjs',
-		'tsconfig.json',
-		'package.json',
-		'.git',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		astro = {
 			completions = true,
 			diagnostics = true,
-			format = {
-				enable = false,
-			},
-			plugins = {
-				typescript = {
-					enable = true,
-				},
-				javascript = {
-					enable = true,
-				},
-				css = {
-					enable = true,
-				},
-			},
-		},
-		typescript = {
-			updateImportsOnFileMove = {
-				enabled = 'always',
-			},
-			completions = {
-				completeFunctionCalls = true,
-			},
-		},
-		javascript = {
-			completions = {
-				completeFunctionCalls = true,
-			},
 		},
 	},
 
-	-- tsdk path (global TypeScript)
 	init_options = {
 		typescript = {
-			tsdk = '/opt/homebrew/lib/node_modules/typescript/lib',
+			tsdk = 'node_modules/typescript/lib',
 		},
 	},
-
-	single_file_support = true,
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
 
 M.name = 'astro'

@@ -1,7 +1,20 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'biome.json',
+	'package.json',
+	'.git',
+}
+
+local fallback_to_cwd = false
+
 local M = {}
 
 M.spec = {
-	cmd = { 'biome', 'lsp-proxy' },
+	cmd = {
+		vim.fn.stdpath('data') .. '/mason/bin/biome',
+		'lsp-proxy',
+	},
 
 	filetypes = {
 		'javascript',
@@ -16,20 +29,13 @@ M.spec = {
 		'markdown',
 	},
 
-	root_markers = {
-		'biome.json',
-		'biome.jsonc',
-		'package.json',
-		'.git',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
-	-- Formatting is handled by conform
+	-- Formatting handled by conform
 	on_attach = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
 	end,
-
-	single_file_support = true,
 }
 
 M.name = 'biome'
