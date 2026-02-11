@@ -1,42 +1,45 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'.git',
+	'db.sql',
+	'init.sql',
+	'schema.sql',
+	'migrations',
+	'docker-compose.yml',
+	'docker-compose.yaml',
+	'package.json',
+	'composer.json',
+	'requirements.txt',
+	'go.mod',
+}
+
+local fallback_to_cwd = true
+
 local M = {}
 
 M.spec = {
-	cmd = { 'sql-language-server', 'up', '--method', 'stdio' },
+	cmd = {
+		vim.fn.stdpath('data') .. '/mason/bin/sql-language-server',
+		'up',
+		'--method',
+		'stdio',
+	},
 
 	filetypes = {
 		'sql',
 		'mysql',
-		-- 'plsql',
-		-- 'pgsql',
-		-- 'sqlite',
+		'pgsql',
 	},
 
-	root_markers = {
-		'.git',
-		-- SQL-specific project markers
-		'db.sql',
-		'init.sql',
-		'schema.sql',
-		'migrations',
-
-		-- Database config files
-		'docker-compose.yml',
-		'docker-compose.yaml',
-
-		-- Project markers that might indicate database usage
-		'package.json',
-		'composer.json',
-		'requirements.txt',
-		'go.mod',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		sqlLanguageServer = {
-			connections = {}, --  project-specific
+			connections = {},
 
 			lint = {
 				rules = {
-					-- Use 'warning' instead of 'error' for better compatibility
 					['align-column-to-the-first'] = 'warning',
 					['column-new-line'] = 'warning',
 					['linebreak-after-clause-keyword'] = 'warning',
@@ -45,16 +48,12 @@ M.spec = {
 				},
 			},
 
-			-- Keep completion settings but make them more flexible
 			completion = {
 				keywordCase = 'preserve',
 				alwaysSelect = false,
 				snippetSupport = true,
 			},
 
-			-- REMOVED: Let conform handle formatting via sql-formatter
-
-			-- Keep basic file associations
 			fileAssociations = {
 				{
 					pattern = '**/*.sql',
@@ -63,9 +62,6 @@ M.spec = {
 			},
 		},
 	},
-
-	single_file_support = true,
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
 
 M.name = 'sqlls'

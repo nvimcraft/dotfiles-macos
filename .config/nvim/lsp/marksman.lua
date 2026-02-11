@@ -1,26 +1,25 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'.marksman.toml',
+	'package.json',
+	'.git',
+}
+
+local fallback_to_cwd = true
+
 local M = {}
 
 M.spec = {
 	cmd = {
-		'marksman',
-		'server',
+		vim.fn.stdpath('data') .. '/mason/bin/marksman',
 	},
 
 	filetypes = {
 		'markdown',
-		-- 'markdown.mdx',
 	},
 
-	root_markers = {
-		'.marksman.toml',
-		'mkdocs.yml',
-		'docs',
-		'_docs',
-		'.git',
-	},
-
-	single_file_support = true,
-	log_level = vim.lsp.protocol.MessageType.Warning,
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 }
 
 M.name = 'marksman'

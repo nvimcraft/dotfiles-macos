@@ -1,8 +1,17 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'package.json',
+	'.git',
+}
+
+local fallback_to_cwd = true
+
 local M = {}
 
 M.spec = {
 	cmd = {
-		'vscode-json-language-server',
+		vim.fn.stdpath('data') .. '/mason/bin/vscode-json-language-server',
 		'--stdio',
 	},
 
@@ -11,12 +20,7 @@ M.spec = {
 		'jsonc',
 	},
 
-	root_markers = {
-		'.git',
-		'package.json',
-		'tsconfig.json',
-		'jsconfig.json',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		json = {
@@ -26,10 +30,6 @@ M.spec = {
 			schemaDownload = { enable = true },
 		},
 	},
-
-	single_file_support = true,
-
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
 
 M.name = 'jsonls'

@@ -1,10 +1,15 @@
-local markers = {
-	'config.toml',
+local lsp = require('core.lsp')
+
+local root_markers = {
 	'supabase',
 	'migrations',
 	'schema.sql',
 	'init.sql',
+	'config.toml',
+	'.git',
 }
+
+local fallback_to_cwd = false
 
 local M = {}
 
@@ -14,22 +19,11 @@ M.spec = {
 		'lsp-proxy',
 	},
 
-	filetypes = { 'sql' },
+	filetypes = {
+		'sql',
+	},
 
-	root_dir = function(bufnr, set_root)
-		local buf_path = vim.api.nvim_buf_get_name(bufnr)
-		if buf_path == '' then
-			return
-		end
-
-		local project_root = vim.fs.root(buf_path, markers)
-		if project_root then
-			set_root(project_root)
-		end
-	end,
-
-	single_file_support = false,
-	log_level = vim.lsp.protocol.MessageType.Warning,
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 }
 
 return M.spec

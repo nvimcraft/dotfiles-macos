@@ -1,23 +1,29 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'go.mod',
+	'go.work',
+	'.git',
+}
+
+local fallback_to_cwd = false
+
 local M = {}
 
 M.spec = {
-	-- cmd = {
-	-- 	vim.fn.expand('~/go/bin/gopls'),
-	-- },
+	cmd = {
+		vim.fn.stdpath('data') .. '/mason/bin/gopls',
+	},
 
 	filetypes = {
 		'go',
-		-- 'gomod',
-		-- 'gowork',
-		-- 'gotmpl',
-		-- 'gosum',
+		'gomod',
+		'gowork',
+		'gotmpl',
+		'gosum',
 	},
 
-	root_markers = {
-		'go.mod',
-		'go.work',
-		'.git',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		gopls = {

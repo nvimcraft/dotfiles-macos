@@ -1,16 +1,25 @@
+local lsp = require('core.lsp')
+
+local root_markers = {
+	'svelte.config.js',
+	'svelte.config.ts',
+	'package.json',
+	'.git',
+}
+
+local fallback_to_cwd = false
+
 local M = {}
 
 M.spec = {
-	cmd = { 'svelteserver', '--stdio' },
+	cmd = {
+		vim.fn.stdpath('data') .. '/mason/bin/svelteserver',
+		'--stdio',
+	},
 
 	filetypes = { 'svelte' },
 
-	root_markers = {
-		'svelte.config.js',
-		'tsconfig.json',
-		'package.json',
-		'.git',
-	},
+	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 
 	settings = {
 		svelte = {
@@ -21,9 +30,6 @@ M.spec = {
 			},
 		},
 	},
-
-	single_file_support = true,
-	log_level = vim.lsp.protocol.MessageType.Warning,
 }
 
 M.name = 'svelte'
