@@ -6,7 +6,7 @@ vim.pack.add({
 
 require('mason').setup()
 
--- LSP servers
+-- Language servers (LSP binaries)
 require('mason-lspconfig').setup({
 	ensure_installed = {
 		'astro',
@@ -19,16 +19,17 @@ require('mason-lspconfig').setup({
 		'jsonls',
 		'lua_ls',
 		'marksman',
+		'postgres_lsp',
 		'pyright',
 		'svelte',
-		'sqlls',
+		-- 'sqlls', -- excluded to enforce single SQL LSP ownership
 		'vtsls',
 		'yamlls',
 	},
 	automatic_installation = true,
 })
 
--- Non-LSP tools
+-- External tooling (non-LSP binaries)
 require('mason-tool-installer').setup({
 	ensure_installed = {
 		-- 'biome',
