@@ -2,44 +2,49 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 })
 
--- vim.pack installs plugins asynchronously on first startup.
--- Treesitter may not be on runtimepath yet; skip setup and retry next launch.
-local has_configs, configs = pcall(require, 'nvim-treesitter.configs')
-if not has_configs then
-	return
-end
+vim.schedule(function()
+	local ok_install, install = pcall(require, 'nvim-treesitter.install')
+	if ok_install then
+		install.compilers = { 'cc', 'clang', 'gcc' }
+	end
 
-configs.setup({
-	ensure_installed = {
-		'astro',
-		'bash',
-		'css',
-		'diff',
-		'gitignore',
-		'go',
-		'graphql',
-		'html',
-		'http',
-		'javascript',
-		'json',
-		'jsonc',
-		'lua',
-		'luadoc',
-		'markdown',
-		'markdown_inline',
-		'python',
-		'svelte',
-		'query',
-		'regex',
-		'toml',
-		'tsx',
-		'typescript',
-		'vim',
-		'vimdoc',
-		'yaml',
-	},
+	local ok, configs = pcall(require, 'nvim-treesitter.configs')
+	if not ok then
+		return
+	end
 
-	auto_install = true,
-	highlight = { enable = true },
-	indent = { enable = true },
-})
+	configs.setup({
+		ensure_installed = {
+			'astro',
+			'bash',
+			'css',
+			'diff',
+			'gitignore',
+			'go',
+			'graphql',
+			'html',
+			'http',
+			'javascript',
+			'json',
+			'jsonc',
+			'lua',
+			'luadoc',
+			'markdown',
+			'markdown_inline',
+			'python',
+			'svelte',
+			'query',
+			'regex',
+			'toml',
+			'tsx',
+			'typescript',
+			'vim',
+			'vimdoc',
+			'yaml',
+		},
+
+		auto_install = true,
+		highlight = { enable = true },
+		indent = { enable = true },
+	})
+end)
