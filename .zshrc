@@ -37,6 +37,48 @@ alias brew-maint="$HOME/dotfiles-macos/scripts/brew-maintenance.sh"
 alias cleanup="$HOME/dotfiles-macos/scripts/system-cleanup.sh"
 alias tmux-s="$HOME/dotfiles-macos/scripts/tmux-session.sh"
 
+## Docker
+# Containers
+alias dps='docker ps'
+alias dpa='docker ps -a'
+alias dstart='docker start'
+alias dstop='docker stop $(docker ps -q)'
+alias drestart='docker restart'
+alias drm='docker rm'
+alias drmf='docker rm -f $(docker ps -aq)'
+alias dkill='docker rm -f $(docker ps -aq)'
+
+# Images
+alias di='docker images'
+alias drmi='docker rmi'
+alias dimclean='docker image prune -f'
+
+# Volumes
+alias dv='docker volume ls'
+alias dvclean='docker volume prune -f'
+
+# Networks
+alias dn='docker network ls'
+alias dnclean='docker network prune -f'
+
+# System
+alias dclean='docker container prune -f'
+alias dprune='docker system prune -f'
+alias dnuke='docker system prune -a --volumes -f'
+
+# Logs
+alias dlogs='docker logs -f'
+
+# Exec into container
+alias dexec='docker exec -it'
+
+# Docker Compose
+alias dc='docker compose'
+alias dcup='docker compose up -d'
+alias dcdown='docker compose down'
+alias dcrestart='docker compose down && docker compose up -d'
+alias dclogs='docker compose logs -f'
+
 # Zsh Plugins
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
