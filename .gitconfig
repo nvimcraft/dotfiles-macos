@@ -1,6 +1,7 @@
-[user]
-	name = nvimcraft
-	email = 260064684+nvimcraft@users.noreply.github.com
+[includeIf "gitdir:/Users/rjl/"]
+  path = ~/.gitconfig-github
+[includeIf "gitdir:/Users/rjl/Developer/projects/gitea/"]
+  path = /Users/rjl/.gitconfig-gitea
 
 [core]
   pager = delta
