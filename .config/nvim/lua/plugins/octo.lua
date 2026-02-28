@@ -1,7 +1,9 @@
 vim.pack.add({
 	{
 		src = 'https://github.com/pwntester/octo.nvim',
-		dependencies = { 'https://github.com/nvim-telescope/telescope.nvim' },
+		dependencies = {
+			'https://github.com/nvim-telescope/telescope.nvim',
+		},
 	},
 })
 
@@ -10,12 +12,17 @@ require('octo').setup({
 	enable_builtin = true,
 })
 
-vim.keymap.set('n', '<leader>oi', '<CMD>Octo issue list<CR>')
-vim.keymap.set('n', '<leader>op', '<CMD>Octo pr list<CR>')
-vim.keymap.set('n', '<leader>od', '<CMD>Octo discussion list<CR>')
-vim.keymap.set('n', '<leader>on', '<CMD>Octo notification list<CR>')
+-- Keymaps
+vim.keymap.set('n', '<leader>oi', '<cmd>Octo issue list<cr>')
+vim.keymap.set('n', '<leader>oI', '<cmd>Octo issue create<cr>')
+vim.keymap.set('n', '<leader>op', '<cmd>Octo pr list<cr>')
+vim.keymap.set('n', '<leader>oP', '<cmd>Octo pr create<cr>')
+vim.keymap.set('n', '<leader>od', '<cmd>Octo discussion list<cr>')
+vim.keymap.set('n', '<leader>on', '<cmd>Octo notification list<cr>')
 vim.keymap.set('n', '<leader>os', function()
-	require('octo.utils').create_base_search_command({
-		include_current_repo = true,
-	})
+	vim.ui.input({ prompt = 'Octo search: ' }, function(search_query)
+		if search_query and search_query ~= '' then
+			vim.cmd('Octo search ' .. search_query)
+		end
+	end)
 end)
