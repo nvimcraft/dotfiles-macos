@@ -23,6 +23,7 @@ local filetypes = {
 	'luadoc',
 	'markdown',
 	'markdown_inline',
+	'mdx',
 	'python',
 	'svelte',
 	'query',
