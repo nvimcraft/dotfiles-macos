@@ -39,6 +39,10 @@ require('plugins.nvim-ts-autotag')
 
 require('core.lsp').setup()
 
+-- Testing
+require('plugins.nvim-dap')
+require('plugins.neotest')
+
 -- Diagnostics / linting
 require('plugins.nvim-lint')
 
