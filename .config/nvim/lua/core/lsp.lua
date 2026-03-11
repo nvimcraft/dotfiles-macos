@@ -40,6 +40,7 @@ function M.setup()
 		'postgres_lsp',
 		'pyright',
 		-- 'sqlls',
+		'rust_analyzer',
 		'svelte',
 		'vtsls',
 		'yamlls',
