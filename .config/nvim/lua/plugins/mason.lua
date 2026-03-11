@@ -43,6 +43,7 @@ require('mason-tool-installer').setup({
 		'shfmt',
 		'stylua',
 		'sqlfmt',
+		'js-debug-adapter',
 	},
 	run_on_start = true,
 })
