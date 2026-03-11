@@ -18,7 +18,7 @@ require('conform').setup({
 	formatters_by_ft = {
 
 		-- Prettier configuration (default formatter)
-		['_'] = { 'codespell', 'trim_whitespace' },
+		['_'] = { 'prettier', 'codespell', 'trim_whitespace' },
 		astro = { 'prettier' },
 		css = { 'prettier' },
 		graphql = { 'prettier' },
@@ -27,6 +27,7 @@ require('conform').setup({
 		javascriptreact = { 'prettier' },
 		json = { 'prettier' },
 		markdown = { 'prettier' },
+		rust = { 'rustfmt' },
 		svelte = { 'prettier' },
 		typescript = { 'prettier' },
 		typescriptreact = { 'prettier' },
