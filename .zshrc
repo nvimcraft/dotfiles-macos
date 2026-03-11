@@ -12,6 +12,9 @@ export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 # Go
 export PATH="$HOME/go/bin:$PATH"
 
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Environment Variables
 export EDITOR="nvim"
 
