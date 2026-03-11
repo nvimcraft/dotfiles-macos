@@ -48,3 +48,6 @@ require('plugins.nvim-lint')
 
 -- LSP-powered tooling
 require('plugins.refactoring')
+
+-- kulala
+require('plugins.kulala')
