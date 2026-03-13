@@ -21,6 +21,7 @@ require('mason-lspconfig').setup({
 		'marksman',
 		'postgres_lsp',
 		'pyright',
+		'rust_analyzer',
 		'svelte',
 		-- 'sqlls', -- excluded to enforce single SQL LSP ownership
 		'vtsls',

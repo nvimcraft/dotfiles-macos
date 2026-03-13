@@ -12,11 +12,13 @@ local fallback_to_cwd = false
 local M = {}
 M.spec = {
 	cmd = {
-		'/Users/rjl/.cargo/bin/rust-analyzer',
+		vim.fn.stdpath('data') .. '/mason/bin/rust-analyzer',
 	},
+
 	filetypes = {
 		'rust',
 	},
+
 	root_dir = lsp.make_root(root_markers, fallback_to_cwd),
 	settings = {
 		rust_analyzer = {
