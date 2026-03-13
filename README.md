@@ -68,6 +68,31 @@ Managed with GNU Stow.
 | `<leader>xd` | Normal | Toggle        | Enable/disable diagnostics      |
 | `<leader>xt` | Normal | Virtual text  | Toggle virtual text diagnostics |
 
+### Debugging
+
+| Keymap       | Mode   | Action            | Description          |
+| ------------ | ------ | ----------------- | -------------------- |
+| `<leader>db` | Normal | Toggle breakpoint | Toggle breakpoint    |
+| `<leader>dc` | Normal | Continue          | Start/continue debug |
+| `<leader>di` | Normal | Step into         | Step into function   |
+| `<leader>do` | Normal | Step over         | Step over function   |
+| `<leader>dO` | Normal | Step out          | Step out of function |
+| `<leader>dr` | Normal | REPL              | Open debug REPL      |
+| `<leader>du` | Normal | UI toggle         | Toggle dapui         |
+
+### Testing
+
+| Keymap       | Mode   | Action   | Description             |
+| ------------ | ------ | -------- | ----------------------- |
+| `<leader>tt` | Normal | Summary  | Toggle test summary     |
+| `<leader>tr` | Normal | Run      | Run nearest test        |
+| `<leader>tf` | Normal | Run file | Run all tests in file   |
+| `<leader>ts` | Normal | Stop     | Stop test run           |
+| `<leader>ta` | Normal | Attach   | Attach to test          |
+| `<leader>to` | Normal | Output   | Open test output        |
+| `<leader>tw` | Normal | Watch    | Run tests in watch mode |
+| `<leader>td` | Normal | Debug    | Debug test with dap     |
+
 ### Git
 
 | Keymap       | Mode            | Action           | Description                      |
@@ -117,3 +142,15 @@ Managed with GNU Stow.
 | `<leader>dt` | Normal | Toggle UI | Database UI     |
 | `<leader>da` | Normal | Add       | Connection      |
 | `<leader>df` | Normal | Find      | Database buffer |
+
+#### HTTP
+
+| Keymap       | Mode   | Action       | Description                 |
+| ------------ | ------ | ------------ | --------------------------- |
+| `<leader>Rb` | Normal | Scratchpad   | Open HTTP scratchpad        |
+| `<leader>Ro` | Normal | Open         | Open kulala                 |
+| `<leader>Rs` | Normal | Send request | Send current request        |
+| `<leader>Ra` | Normal | Send all     | Send all requests in buffer |
+| `<leader>Rr` | Normal | Replay       | Replay last request         |
+| `<leader>Rf` | Normal | Find request | Find request in buffer      |
+| `<leader>Re` | Normal | Environment  | Select environment          |
