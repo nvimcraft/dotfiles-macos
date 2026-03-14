@@ -29,9 +29,10 @@ require('conform').setup({
 		markdown = { 'prettier' },
 		rust = { 'rustfmt' },
 		svelte = { 'prettier' },
+		toml = { 'taplo' },
 		typescript = { 'prettier' },
 		typescriptreact = { 'prettier' },
-		yaml = { 'prettier' },
+		yaml = { 'yamlfmt' },
 
 		go = { 'goimports', 'gofmt' },
 		lua = { 'stylua' },
