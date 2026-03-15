@@ -1,7 +1,7 @@
-[includeIf "gitdir:/Users/rjl/"]
-  path = ~/.gitconfig-github
-[includeIf "gitdir:/Users/rjl/Developer/projects/gitea/"]
-  path = /Users/rjl/.gitconfig-gitea
+[includeIf "gitdir:/Users/rjleyva/Developer/projects/gitea/"]
+  path = /Users/rjleyva/.gitconfig-gitea
+[includeIf "gitdir:/Users/rjleyva/Developer/projects/github/"]
+  path = /Users/rjleyva/.gitconfig-github
 
 [core]
   pager = delta
