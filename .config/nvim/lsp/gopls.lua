@@ -27,14 +27,14 @@ M.spec = {
 
 	settings = {
 		gopls = {
-			gofumpt = true,
+			-- gofumpt = true, -- Formatting handled by conform.lua
 			staticcheck = true,
 			semanticTokens = true,
 			usePlaceholders = true,
 			completeUnimported = true,
-			memoryMode = 'DegradeClosed', -- reduces memory usage
+			-- memoryMode = 'DegradeClosed', -- Deprecated
 			experimentalPostfixCompletions = true,
-			experimentalWorkspaceModule = true,
+			-- experimentalWorkspaceModule = true, -- Deprecated
 
 			codelenses = {
 				gc_details = true,
