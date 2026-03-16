@@ -24,6 +24,7 @@ require('plugins.nvim-highlight-colors')
 
 -- Editor tooling
 require('plugins.gitsigns')
+require('plugins.vim-fugitive')
 require('plugins.octo')
 require('plugins.vim-dadbod')
 
