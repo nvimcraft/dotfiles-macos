@@ -42,6 +42,7 @@ function M.setup()
 		-- 'sqlls',
 		'rust_analyzer',
 		'svelte',
+		'templ',
 		'vtsls',
 		'yamlls',
 	})
