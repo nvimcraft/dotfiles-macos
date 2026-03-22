@@ -16,6 +16,7 @@ require('mason-lspconfig').setup({
 		'gopls',
 		'graphql',
 		'html',
+		'htmx',
 		'jsonls',
 		'lua_ls',
 		'marksman',
@@ -24,6 +25,7 @@ require('mason-lspconfig').setup({
 		'rust_analyzer',
 		'svelte',
 		-- 'sqlls', -- excluded to enforce single SQL LSP ownership
+		'templ',
 		'vtsls',
 		'yamlls',
 	},
