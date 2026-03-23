@@ -13,10 +13,17 @@ require('neotest').setup({
 			filter_dir = function(name, _)
 				return name ~= 'node_modules'
 			end,
+			root = vim.fn.getcwd(),
 		}),
+
 		require('neotest-jest')({
 			jestCommand = 'pnpm test --',
+			root = vim.fn.getcwd(),
 		}),
+
+		output = {
+			open_on_run = 'always',
+		},
 	},
 })
 
