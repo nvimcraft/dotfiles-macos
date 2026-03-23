@@ -7,14 +7,14 @@ vim.pack.add({
 local dap = require('dap')
 
 local js_debug_adapter_path = vim.fn.stdpath('data')
-	.. '/mason/packages/js-debug-adapter/js-debug/out/src/dapDebugServer.js'
+	.. '/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js'
 dap.adapters['pwa-node'] = {
 	type = 'server',
 	host = 'localhost',
-	port = '${port}',
+	port = 15554,
 	executable = {
 		command = 'node',
-		args = { js_debug_adapter_path, '${port}' },
+		args = { js_debug_adapter_path, 15554 },
 	},
 }
 
@@ -46,12 +46,12 @@ local js_debug_configs = {
 		type = 'pwa-node',
 		request = 'launch',
 		name = 'Debug Vitest Tests',
-		program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
+		command = 'vitest',
 		args = { 'run', '${file}' },
 		cwd = '${workspaceFolder}',
 		console = 'integratedTerminal',
 		sourceMaps = true,
-		skipFiles = { '<node_internals>/**', '**/node_modules/**' },
+		skipFiles = { '<node_internals>/**', '**/node_modules/**', '**/vitest/**' },
 	},
 
 	{
