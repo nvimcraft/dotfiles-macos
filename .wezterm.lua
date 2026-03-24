@@ -12,37 +12,39 @@ M.spec = {
 	scrollback_lines = 10000,
 
 	colors = {
-		-- Everforest (Dark (Hard)
-		foreground = "#d3c6aa",
-		background = "#272e33",
+		-- Kaso (ink)
+		foreground = "#C5C9C7",
+		background = "#14171d",
 
-		cursor_bg = "#d3c6aa",
-		cursor_fg = "#272e33",
-		cursor_border = "#d3c6aa",
+		cursor_bg = "#C5C9C7",
+		cursor_fg = "#14171d",
+		cursor_border = "#C5C9C7",
 
-		selection_bg = "#414b50",
-		selection_fg = "#d3c6aa",
+		selection_fg = "#C5C9C7",
+		selection_bg = "#393B44",
+
+		scrollbar_thumb = "#393B44",
+		split = "#393B44",
 
 		ansi = {
-			"#414b50",
-			"#e67e80",
-			"#a7c080",
-			"#dbbc7f",
-			"#7fbbb3",
-			"#d699b6",
-			"#83c092",
-			"#d3c6aa",
+			"#14171d",
+			"#C4746E",
+			"#8A9A7B",
+			"#C4B28A",
+			"#8BA4B0",
+			"#A292A3",
+			"#8EA4A2",
+			"#A4A7A4",
 		},
-
 		brights = {
-			"#859289",
-			"#e67e80",
-			"#a7c080",
-			"#dbbc7f",
-			"#7fbbb3",
-			"#d699b6",
-			"#83c092",
-			"#fdf6e3",
+			"#A4A7A4",
+			"#E46876",
+			"#87A987",
+			"#E6C384",
+			"#7FB4CA",
+			"#938AA9",
+			"#7AA89F",
+			"#C5C9C7",
 		},
 	},
 }

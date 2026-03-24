@@ -13,8 +13,7 @@ require('config.keymaps').setup()
 require('config.autocmds').setup()
 
 -- UI
--- require('plugins.vague')
-require('plugins.everforest')
+require('plugins.kanso')
 require('plugins.mini-pairs')
 require('plugins.plenary')
 require('plugins.telescope')
