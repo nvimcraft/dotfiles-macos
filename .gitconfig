@@ -5,7 +5,7 @@
 
 [core]
   pager = delta
-	excludesfile = /Users/rjl/.gitignore_global
+  excludesfile = /Users/rjleyva/dotfiles-macos/.gitignore_global
   editor = nvim
 
 [interactive]
