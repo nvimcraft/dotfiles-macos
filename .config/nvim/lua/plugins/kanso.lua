@@ -16,8 +16,8 @@ require('kanso').setup({
 	dimInactive = false,
 	terminalColors = true,
 	background = {
-		dark = 'ink', -- try "zen", "mist" or "pearl"!
-		light = 'ink', -- try "zen", "mist" or "ink"!
+		dark = 'zen', -- try "zen", "mist" or "pearl"!
+		light = 'zen', -- try "zen", "mist" or "ink"!
 	},
 	foreground = 'default', -- "default" or "saturated"
 	minimal = true,
