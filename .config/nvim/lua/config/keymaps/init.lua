@@ -3,7 +3,7 @@ local M = {}
 -- Keymaps modules
 local keymaps_modules = {
 	'config.keymaps.general',
-	'config.keymaps.navigations',
+	-- 'config.keymaps.navigations',
 	'config.keymaps.diagnostics',
 }
 

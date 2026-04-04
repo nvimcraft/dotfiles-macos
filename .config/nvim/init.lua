@@ -20,6 +20,7 @@ require('plugins.telescope')
 require('plugins.nvim-surround')
 require('plugins.conform')
 require('plugins.nvim-highlight-colors')
+require('plugins.vim-tmux-navigator')
 
 -- Editor tooling
 require('plugins.gitsigns')
