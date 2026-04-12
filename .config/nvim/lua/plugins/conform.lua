@@ -18,7 +18,7 @@ require('conform').setup({
 	formatters_by_ft = {
 
 		-- Prettier configuration (default formatter)
-		['_'] = { 'prettier', 'codespell', 'trim_whitespace' },
+		-- ['_'] = { 'prettier', 'codespell', 'trim_whitespace' },
 		astro = { 'prettier' },
 		css = { 'prettier' },
 		graphql = { 'prettier' },
