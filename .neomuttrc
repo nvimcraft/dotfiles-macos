@@ -1,0 +1,29 @@
+source ~/.neomutt-secrets
+
+set imap_user = "rjleyva@icloud.com"
+
+set folder = "imaps://$imap_user@imap.mail.me.com:993"
+set spoolfile = "imaps://$imap_user@imap.mail.me.com:993/INBOX"
+set record = "imaps://$imap_user@imap.mail.me.com:993/Sent"
+set postponed = "imaps://$imap_user@imap.mail.me.com:993/Drafts"
+set trash = "imaps://$imap_user@imap.mail.me.com:993/Trash"
+
+set ssl_force_tls = yes
+
+set mail_check = 30
+set timeout = 30
+
+color normal white black
+color signature red black
+color indicator cyan black
+color status white black
+color tree magenta black
+color error red black
+color message green black
+color prompt yellow black
+color header white black
+color body white black
+
+color index_author green default
+color index_subject cyan default
+color index_date yellow default
