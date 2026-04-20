@@ -5,22 +5,43 @@ vim.pack.add({
 require('kanso').setup({
 	bold = true,
 	italics = true,
-	compile = true,
+	compile = false, -- important: disable compile
 	undercurl = true,
 	commentStyle = { italic = true },
-	functionStyle = {},
 	keywordStyle = { italic = true },
-	statementStyle = {},
-	typeStyle = {},
 	transparent = false,
 	dimInactive = false,
 	terminalColors = true,
 	background = {
-		dark = 'zen', -- try "zen", "mist" or "pearl"!
-		light = 'zen', -- try "zen", "mist" or "ink"!
+		dark = 'zen',
+		light = 'zen',
 	},
-	foreground = 'default', -- "default" or "saturated"
+	foreground = 'default',
 	minimal = true,
+})
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+	pattern = 'kanso',
+	callback = function()
+		local groups = {
+			'Normal',
+			'NormalNC',
+			'SignColumn',
+			'EndOfBuffer',
+			'VertSplit',
+			'StatusLine',
+			'TabLine',
+			'LineNr',
+			'CursorLineNr',
+			'FoldColumn',
+			'NormalFloat',
+			'FloatBorder',
+		}
+
+		for _, group in ipairs(groups) do
+			vim.api.nvim_set_hl(0, group, { bg = 'none' })
+		end
+	end,
 })
 
 vim.cmd('colorscheme kanso')
