@@ -1,4 +1,5 @@
 vim.pack.add({
+	{ src = 'https://github.com/lewis6991/async.nvim' },
 	{ src = 'https://github.com/ThePrimeagen/refactoring.nvim' },
 })
 
