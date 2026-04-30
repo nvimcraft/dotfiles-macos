@@ -1,88 +1,63 @@
-# Powerlevel10k
+# PowerLevel10K
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Homebrew (Python, tools, etc.)
-export PATH="/opt/homebrew/bin:$PATH"
-
-# Bob (Neovim versions)
-export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-
-# Go
-export PATH="$HOME/go/bin:$PATH"
-
-# Rust
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Environment Variables
 export EDITOR="nvim"
-
-# Bat
 export BAT_THEME="TwoDark"
 
-# JJ Completion
-autoload -U compinit
-compinit
-source <(COMPLETE=zsh jj)
+typeset -U path PATH
 
-# Powerlevel10k Theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+path=(
+  /opt/homebrew/bin
+  $HOME/.cargo/bin
+  $HOME/go/bin
+  $HOME/.local/share/bob/nvim-bin(N)
+  $path
+)
+
+export PATH
+
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p "$ZSH_CACHE_DIR"
+
+autoload -Uz compinit
+
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump"
+
+# If dump is corrupted or missing, rebuild safely
+if [[ ! -s "$ZSH_COMPDUMP" ]]; then
+  compinit -d "$ZSH_COMPDUMP"
+else
+  compinit -d "$ZSH_COMPDUMP" -C
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh --cmd cd)"
+fi
+
+if command -v jj >/dev/null 2>&1; then
+  source <(COMPLETE=zsh jj)
+fi
+
+if [[ -f /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+  source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+fi
+
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-# Zoxide
-eval "$(zoxide init --cmd=cd zsh)"
+if [[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
-# Aliases
+if [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
 alias ls='eza --long --all --git --icons --time-style=iso --group --classify'
-alias tree="eza --all --tree --icons --ignore-glob='node_modules|.git|.jj'"
+alias tree='eza --all --tree --icons --ignore-glob="node_modules|.git|.jj"'
+
 alias brew-maint="$HOME/dotfiles-macos/scripts/brew-maintenance.sh"
 alias cleanup="$HOME/dotfiles-macos/scripts/system-cleanup.sh"
 alias tmux-s="$HOME/dotfiles-macos/scripts/tmux-session.sh"
 alias jjid="$HOME/dotfiles-macos/scripts/jj-set-identity.sh"
-
-## Docker
-# Containers
-alias dps='docker ps'
-alias dpa='docker ps -a'
-alias dstart='docker start'
-alias dstop='docker stop $(docker ps -q)'
-alias drestart='docker restart'
-alias drm='docker rm'
-alias drmf='docker rm -f $(docker ps -aq)'
-alias dkill='docker rm -f $(docker ps -aq)'
-
-# Images
-alias di='docker images'
-alias drmi='docker rmi'
-alias dimclean='docker image prune -f'
-
-# Volumes
-alias dv='docker volume ls'
-alias dvclean='docker volume prune -f'
-
-# Networks
-alias dn='docker network ls'
-alias dnclean='docker network prune -f'
-
-# System
-alias dclean='docker container prune -f'
-alias dprune='docker system prune -f'
-alias dnuke='docker system prune -a --volumes -f'
-
-# Logs
-alias dlogs='docker logs -f'
-
-# Exec into container
-alias dexec='docker exec -it'
-
-# Docker Compose
-alias dc='docker compose'
-alias dcup='docker compose up -d'
-alias dcdown='docker compose down'
-alias dcrestart='docker compose down && docker compose up -d'
-alias dclogs='docker compose logs -f'
-
-# Zsh Plugins
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
