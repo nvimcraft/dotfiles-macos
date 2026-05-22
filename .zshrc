@@ -4,7 +4,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export EDITOR="nvim"
-export BAT_THEME="TwoDark"
+export BAT_THEME="gruvbox-dark"
 
 typeset -U path PATH
 
@@ -54,7 +54,7 @@ if [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-alias ls='eza --long --all --git --icons --time-style=iso --group --classify'
+alias ll='eza --long --all --git --icons --time-style=iso --group --classify'
 alias tree='eza --all --tree --icons --ignore-glob="node_modules|.git|.jj"'
 
 alias brew-maint="$HOME/dotfiles-macos/scripts/brew-maintenance.sh"
