@@ -4,7 +4,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export EDITOR="nvim"
-export BAT_THEME="gruvbox-dark"
+export BAT_THEME="TwoDark"
 
 typeset -U path PATH
 
