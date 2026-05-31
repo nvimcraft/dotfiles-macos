@@ -1,0 +1,33 @@
+# Common defaults
+RCS
+.+,v
+CVS
+.#.+
+.cvsignore
+.svn
+_darcs
+.hg
+.git
+.gitignore
+.gitmodules
+.+~
+#.*#
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Vendored opencode deps — not needed in $HOME
+^\.config/opencode/node_modules
+^\.config/opencode/package-lock\.json
+^\.config/opencode/package\.json
+
+# Machine-local cagent data
+^\.config/cagent/
+
+# macOS and editor cruft (defense in depth)
+\.DS_Store
+node_modules
+.*\.sw[pon]
+
+# Generated artifacts
+^\.config/opencode/bun\.lock
